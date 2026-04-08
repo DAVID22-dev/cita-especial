@@ -2,86 +2,78 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuestra Próxima Cita ❤️</title>
     <style>
-    body {
-        background-color: #40E0D0; /* Turquoise */
-        color: #000000; /* Black text */
-    }
-
-    h1, h2, h3 {
-        color: #008B8B; /* Dark Cyan */
-    }
-
-    a {
-        color: #00CED1; /* Dark Turquoise */
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-
-    .button {
-        background-color: #48D1CC; /* Medium Turquoise */
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .button:hover {
-        background-color: #20B2AA; /* Light Sea Green */
-    }
-
-    /* More styling lines can be added here for additional elements */
-</style>
-</head>
-<body>
-
-    <h1>¿Hola Preciosa! A dónde vamos en nuestra siguiente cita? ✨</h1>
-    <p>Haz clic en cualquier lugar para activar la música y elige tu opción favorita:</p>
-
-    <div class="container">
-        <div class="card" onclick="elegir('una cena deliciosa!')">
-            <img src="cena.jpg" alt="Cena">
-            <h3>Restaurante Koreano</h3>
-        </div>
-
-        <div class="card" onclick="elegir('una tarde llena de arte y pintura')">
-            <img src="arte.jpg" alt="Pintura">
-            <h3>Tarde de Arte</h3>
-        </div>
-
-        <div class="card" onclick="elegir('una aventura construyendo algo juntos')">
-            <img src="lego.jpg" alt="LEGO">
-            <h3>Dia de juegos!</h3>
-        </div>
-    </div>
-
-    <div id="mensaje-final"></div>
-
-    <audio id="musica-fondo" loop>
-        <source src="musica.mp3" type="audio/mpeg">
-    </audio>
-
-    <script>
-        function elegir(opcion) {
-            const mensaje = document.getElementById('mensaje-final');
-            mensaje.style.display = 'block';
-            mensaje.innerHTML = "¡Me encanta! Entonces prepárate para " + opcion + ". ❤️";
-            
-            // Efecto de confeti o alerta si prefieres
-            alert("¡Cita confirmada!");
+        /* --- Estilo Base y Colores --- */
+        body {
+            background-color: #e0f7fa; /* Un fondo celeste suave para que resalte el turquesa */
+            color: #333333; /* Texto casi negro, más suave que negro puro */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
         }
 
-        // Activar música al primer clic en la pantalla
-        window.addEventListener('click', () => {
-            const musica = document.getElementById('musica-fondo');
-            musica.play();
-        }, { once: true });
-    </script>
+        h1, h2, h3 {
+            color: #008B8B; /* Dark Cyan para títulos */
+        }
 
-</body>
-</html>
+        h1 {
+            font-size: 2.5em;
+            margin-top: 40px;
+        }
+
+        p {
+            color: #00796B; /* Un turquesa oscuro para el texto */
+            font-size: 1.2em;
+        }
+
+        /* --- CONTENEDOR DE TARJETAS (Esto es lo que faltaba) --- */
+        .container {
+            display: flex; /* Pone las tarjetas una al lado de la otra */
+            justify-content: center; /* Centra las tarjetas en la pantalla */
+            gap: 25px; /* Espacio entre las tarjetas */
+            flex-wrap: wrap; /* Si no caben en celular, se ponen una debajo */
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        /* --- ESTILO DE CADA TARJETA --- */
+        .card {
+            background-color: white; /* Tarjeta blanca para que resalte */
+            border-radius: 20px; /* Bordes redondeados */
+            padding: 15px;
+            width: 280px; /* Ancho fijo de la tarjeta */
+            box-shadow: 0 8px 15px rgba(0, 139, 139, 0.15); /* Sombra turquesa suave */
+            transition: all 0.3s ease; /* Animación suave al pasar el mouse */
+            cursor: pointer;
+            border: 3px solid transparent; /* Borde oculto por defecto */
+        }
+
+        .card:hover {
+            transform: translateY(-10px); /* Sube un poco al pasar el mouse */
+            border: 3px solid #40E0D0; /* Aparece el borde turquesa al pasar el mouse */
+            box-shadow: 0 12px 20px rgba(64, 224, 208, 0.3);
+        }
+
+        /* --- ESTILO DE LAS IMÁGENES DENTRO DE LAS TARJETAS (Esto arregla el tamaño gigante) --- */
+        .card img {
+            width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+            height: 200px; /* Altura fija para que todas sean iguales */
+            border-radius: 15px; /* Bordes redondeados en la imagen */
+            object-fit: cover; /* Ajusta la imagen sin deformarla */
+        }
+
+        /* --- MENSAJE FINAL --- */
+        #mensaje-final {
+            display: none; /* Oculto al principio */
+            margin: 40px auto;
+            max-width: 500px;
+            padding: 25px;
+            background-color: #40E0D0; /* Fondo turquesa brillante */
+            color: white; /* Texto blanco para que resalte */
+            border-radius: 50px;
+            font-size: 1.4em;
+            font-weight: bold;
+            box-shadow: 0 5px 15px
