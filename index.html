@@ -1,4 +1,9 @@
-<style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuestra Próxima Cita ❤️</title>
+    <style>
     body {
         background-color: #40E0D0; /* Turquoise */
         color: #000000; /* Black text */
@@ -32,3 +37,51 @@
 
     /* More styling lines can be added here for additional elements */
 </style>
+</head>
+<body>
+
+    <h1>¿Hola Preciosa! A dónde vamos en nuestra siguiente cita? ✨</h1>
+    <p>Haz clic en cualquier lugar para activar la música y elige tu opción favorita:</p>
+
+    <div class="container">
+        <div class="card" onclick="elegir('una cena deliciosa!')">
+            <img src="cena.jpg" alt="Cena">
+            <h3>Restaurante Koreano</h3>
+        </div>
+
+        <div class="card" onclick="elegir('una tarde llena de arte y pintura')">
+            <img src="arte.jpg" alt="Pintura">
+            <h3>Tarde de Arte</h3>
+        </div>
+
+        <div class="card" onclick="elegir('una aventura construyendo algo juntos')">
+            <img src="lego.jpg" alt="LEGO">
+            <h3>Dia de juegos!</h3>
+        </div>
+    </div>
+
+    <div id="mensaje-final"></div>
+
+    <audio id="musica-fondo" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function elegir(opcion) {
+            const mensaje = document.getElementById('mensaje-final');
+            mensaje.style.display = 'block';
+            mensaje.innerHTML = "¡Me encanta! Entonces prepárate para " + opcion + ". ❤️";
+            
+            // Efecto de confeti o alerta si prefieres
+            alert("¡Cita confirmada!");
+        }
+
+        // Activar música al primer clic en la pantalla
+        window.addEventListener('click', () => {
+            const musica = document.getElementById('musica-fondo');
+            musica.play();
+        }, { once: true });
+    </script>
+
+</body>
+</html>
